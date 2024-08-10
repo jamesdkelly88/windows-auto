@@ -3,6 +3,9 @@ Set-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\'
 Set-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name 'UserAuthentication' -value 0
 Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
 
+# Enable Ping
+New-NetFirewallRule -DisplayName "ICMP Allow Ping V4" -Direction Inbound -Protocol ICMPv4 -IcmpType 8 -Action Allow
+
 # Disable password complexity
 secedit /export /cfg c:\secpol.cfg
 (gc C:\secpol.cfg).replace("PasswordComplexity = 1","PasswordComplexity = 0") | Out-File C:\secpol.cfg
