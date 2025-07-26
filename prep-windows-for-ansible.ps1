@@ -1,3 +1,6 @@
+# Execution Policy
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine -Force
+
 # Enable RDP
 Set-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\' -name 'fDenyTSConnections' -value 0
 Set-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name 'UserAuthentication' -value 0
